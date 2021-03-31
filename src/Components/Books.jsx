@@ -5,9 +5,41 @@ import history from '../Components/MyBooks.json'
 
 class Books extends React.Component {
   state ={
-    search: ""
+    search: "",
+    cart:[]
   }
+
+  componentDidMount(){
+    this.initializeCart()
+  } 
+
+  initializeCart(){
+    const cartInLocal = localStorage.getItem("cart");
+    if(cartInLocal){
+      const cart = JSON.parse(cartInLocal)
+      this.setState({cart})
+    }
+    else{
+     localStorage.setItem("cart",JSON.stringify([]))
+    }
+  }
+  addToCard = (book) => {
+    this.setState(
+      (prevState)=>
+
+       this.setState({cart:[...prevState.cart,book]})
+    ,
+    ()=>{
+      localStorage.setItem("cart",JSON.stringify(this.state.cart))
+    }
+    
+    )
+
+  }
+  isInCart =(book) => this.state.cart.some(b=>book.asin===b.asin)
+
   render() {
+
     return (
       <div className="container-fluid">
        <Row>
@@ -26,12 +58,18 @@ class Books extends React.Component {
        .filter(book=> book.title.toLowerCase().indexOf(this.state.search) !== -1)
        .map(book=>
       
-      <Card style={{ width: '18rem' }} >
+      <Card style={{ width: '18rem' }} className="ml-4 mb-5" >
       <Card.Img variant="top" src={book.img} />
       <Card.Body>
        <Card.Title>{book.title}</Card.Title>
-      <Button variant="primary">Add to Cart {book.price} & - ({book.category})</Button>
+
+      <Button className="mt-5" block disabled={this.isInCart(book)} onClick={()=>this.addToCard(book)} variant={!this.isInCart(book) ?"primary":"danger"}>{this.isInCart(book)?"Added to Cart ":" Add to Cart"}</Button>
+
      </Card.Body>
+     <Card.Footer>
+
+       {book.price}
+     </Card.Footer>
       </Card>)}
       </Row>
       </div>
