@@ -1,23 +1,22 @@
-import logo from './logo.svg';
+import React from 'react'
+// import logo from './logo.svg';
 import './App.css';
+import Mynavbar from './Components/Navbar.jsx';
+import Helloworld from './Components/Helloworld.jsx';
+import Jumbo from './Components/Jumbotron.jsx';
+import Books from './Components/Books.jsx';
+import Footer from './Components/Footer.jsx';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+   <Mynavbar />
+   <Jumbo />
+   <Books text= "Hello World"/>
+   <Helloworld message="WelcomeBack" name="Hafiz" />
+   <Footer />
     </div>
   );
 }
