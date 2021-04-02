@@ -6,7 +6,6 @@ import history from '../Components/MyBooks.json'
 class Books extends React.Component {
   state ={
     search: "",
-    comments: []
   }
 
 
@@ -16,8 +15,8 @@ class Books extends React.Component {
     return (
       <div className="container-fluid">
        <Row>
-       <h1>{this.props.text}</h1>
-        <FormControl className = "mb-4"
+       <h1 className="ml-5" >{this.props.text}</h1>
+        <FormControl className = "mb-5 mx-5"
           placeholder = "search"
           value = {this.state.value}
           onChange={(e)=> this.setState({ search: e.currentTarget.value.toLowerCase() })}
@@ -31,7 +30,7 @@ class Books extends React.Component {
        .filter(book=> book.title.toLowerCase().indexOf(this.state.search) !== -1)
        .map(book=>
       
-      <Card style={{ width: '18rem' }} className="ml-4 mb-5" >
+      <Card style={{ width: '18rem' }} className="mx-5 mb-5" >
       <Card.Img variant="top" src={book.img} />
       <Card.Body>
        <Card.Title>{book.title}</Card.Title>
