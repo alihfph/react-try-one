@@ -6,11 +6,11 @@ class Jumbo extends React.Component {
     return (
       <>
  <Jumbotron>
-  <h1>Hello, world!</h1>
+  <h1>Strive Books</h1>
   {/* <img src="#"></img> */}
   <p>
-    This is a simple hero unit, a simple jumbotron-style component for calling
-    extra attention to featured content or information.
+  “Books are the quietest and most constant of friends; they are the most accessible and wisest of counselors, and the most patient of teachers.”
+  <b> Charles W. Eliot </b>
   </p>
   <p>
     <Button variant="primary">Learn more</Button>
