@@ -7,7 +7,7 @@ class Jumbo extends React.Component {
       <>
  <Jumbotron>
   <h1>Hello, world!</h1>
-  <img src="https://i2.wp.com/oxfordbookstore.com/wp-content/uploads/2020/04/slide2.jpg?fit=1200%2C350&ssl=1"></img>
+  {/* <img src="#"></img> */}
   <p>
     This is a simple hero unit, a simple jumbotron-style component for calling
     extra attention to featured content or information.

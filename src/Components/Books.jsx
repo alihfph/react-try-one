@@ -6,37 +6,10 @@ import history from '../Components/MyBooks.json'
 class Books extends React.Component {
   state ={
     search: "",
-    cart:[]
+    comments: []
   }
 
-  componentDidMount(){
-    this.initializeCart()
-  } 
 
-  initializeCart(){
-    const cartInLocal = localStorage.getItem("cart");
-    if(cartInLocal){
-      const cart = JSON.parse(cartInLocal)
-      this.setState({cart})
-    }
-    else{
-     localStorage.setItem("cart",JSON.stringify([]))
-    }
-  }
-  addToCard = (book) => {
-    this.setState(
-      (prevState)=>
-
-       this.setState({cart:[...prevState.cart,book]})
-    ,
-    ()=>{
-      localStorage.setItem("cart",JSON.stringify(this.state.cart))
-    }
-    
-    )
-
-  }
-  isInCart =(book) => this.state.cart.some(b=>book.asin===b.asin)
 
   render() {
 
@@ -62,15 +35,17 @@ class Books extends React.Component {
       <Card.Img variant="top" src={book.img} />
       <Card.Body>
        <Card.Title>{book.title}</Card.Title>
+  
 
-      <Button className="mt-5" block disabled={this.isInCart(book)} onClick={()=>this.addToCard(book)} variant={!this.isInCart(book) ?"primary":"danger"}>{this.isInCart(book)?"Added to Cart ":" Add to Cart"}</Button>
+      <Button className="mt-5"> Add to Cart </Button>
 
      </Card.Body>
      <Card.Footer>
 
-       {book.price}
+       {book.price} Euro -{book.category}
      </Card.Footer>
       </Card>)}
+
       </Row>
       </div>
        
